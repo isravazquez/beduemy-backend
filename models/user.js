@@ -32,6 +32,9 @@ module.exports = (sequelize) => {
         },
         roleId: {
             type: Sequelize.INTEGER,
+
+            allowNull: false,
+
             validate: {
                 is: /^[1-3]+$/
             },

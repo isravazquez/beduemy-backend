@@ -10,6 +10,7 @@ module.exports = (sequelize) => sequelize.define('purchases', {
     },
     studentId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
             model: 'users',
             key: 'id'
@@ -18,6 +19,7 @@ module.exports = (sequelize) => sequelize.define('purchases', {
     },
     courseId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
             model: 'courses',
             key: 'id'
