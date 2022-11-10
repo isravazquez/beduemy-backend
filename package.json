@@ -25,14 +25,10 @@
     "helmet": "^6.0.0",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.25.5"
+    "sequelize": "^6.25.5",
+    "dotenv": "^16.0.3"
   },
   "devDependencies": {
     "sequelize-cli": "^6.5.2"
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "mysql2": "^2.3.3",
-    "sequelize": "^6.25.5"
-
   }
 }
