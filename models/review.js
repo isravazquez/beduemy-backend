@@ -10,7 +10,7 @@ module.exports = (sequelize) => sequelize.define('reviews', {
         unique: true
     },
     studentId: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
             model: 'users',
@@ -19,7 +19,7 @@ module.exports = (sequelize) => sequelize.define('reviews', {
         onDelete: 'CASCADE'
     },
     courseId: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
             model: 'courses',

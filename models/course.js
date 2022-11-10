@@ -9,7 +9,7 @@ module.exports = (sequelize) => sequelize.define('courses', {
         unique: true
     },
     instructorId: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
             model: 'users',

@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, Sequelize } = require('sequelize');
 const bcrypt = require('bcrypt');
 
 module.exports = (sequelize) => {
@@ -33,7 +33,7 @@ module.exports = (sequelize) => {
             }
         },
         roleId: {
-            type: DataTypes.INTEGER,
+            type: Sequelize.INTEGER,
             allowNull: false,
             validate: {
                 is: /^[1-3]+$/
