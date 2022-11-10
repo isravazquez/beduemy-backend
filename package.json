@@ -29,5 +29,10 @@
   },
   "devDependencies": {
     "sequelize-cli": "^6.5.2"
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.25.5"
+
   }
 }

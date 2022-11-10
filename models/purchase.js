@@ -6,8 +6,7 @@ module.exports = (sequelize) => sequelize.define('purchases', {
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
-        autoIncrementIdentity: true,
-        unique: true
+        autoIncrementIdentity: true
     },
     studentId: {
         type: Sequelize.INTEGER,

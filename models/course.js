@@ -18,7 +18,7 @@ module.exports = (sequelize) => sequelize.define('courses', {
         onDelete: 'CASCADE'
     },
     name: {
-        type: DataTypes.TEXT(64),
+        type: DataTypes.TEXT,
         allowNull: false
     },
     price: {

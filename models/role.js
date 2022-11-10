@@ -9,7 +9,7 @@ module.exports = (sequelize) => sequelize.define('roles', {
         unique: true
     },
     role: {
-        type: DataTypes.TEXT(64),
+        type: DataTypes.TEXT,
         allowNull: false
     }
 })

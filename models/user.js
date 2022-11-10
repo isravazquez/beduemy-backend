@@ -6,9 +6,7 @@ module.exports = (sequelize) => {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            primaryKey: true,
-            autoIncrement: true,
-            unique: true
+            primaryKey: true
         },
         name: {
             type: DataTypes.STRING(32),
@@ -34,7 +32,9 @@ module.exports = (sequelize) => {
         },
         roleId: {
             type: Sequelize.INTEGER,
+
             allowNull: false,
+
             validate: {
                 is: /^[1-3]+$/
             },

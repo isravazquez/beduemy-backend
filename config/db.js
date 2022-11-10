@@ -4,17 +4,25 @@ const userModel = require('../models/user')
 const courseModel = require('../models/course')
 const purchaseModel = require('../models/purchase')
 const reviewModel = require('../models/review')
-const roleModel = require('../models/review')
+const roleModel = require('../models/role')
+
+
+// const sequelize = new Sequelize('mysql://admin:12345678@beduemy.cgb2tc3redhd.us-east-2.rds.amazonaws.com:3306/mysql', {dialectOptions: {
+//     ssl:
+//     {
+//         require: true, rejectUnauthorized: false
+//     }
+// }});
 
 const sequelize = new Sequelize(
     'beduemy',
     'root',
-    'password',
+    '',
     {
-        host: 'localhost',
-        dialect: 'mysql',
-        port: 3306,
-        logging: false
+      host: 'localhost',
+      dialect: 'mysql',
+      port: 3306,
+      logging: false
     }
 )
 
