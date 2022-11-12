@@ -3,6 +3,7 @@ const router = express.Router()
 
 const authenticate = require('../middleware/authentication')
 
+//router.use('/auth', require('./auth'))
 router.use('/course', require('./course'))
 router.use('/purchase', require('./purchase'))
 router.use('/review', require('./review'))
