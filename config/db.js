@@ -6,7 +6,7 @@ const purchaseModel = require('../models/purchase')
 const reviewModel = require('../models/review')
 const roleModel = require('../models/role')
 
-const sequelize = new Sequelize(
+/* const sequelize = new Sequelize(
   process.env.DB_DATABASE,
   process.env.DB_USER,
   process.env.DB_PASSWORD,
@@ -16,7 +16,8 @@ const sequelize = new Sequelize(
     port: 3306,
     logging: false
   }
-)
+) */
+
 
 const models = [userModel, courseModel, purchaseModel, reviewModel, roleModel]
 
