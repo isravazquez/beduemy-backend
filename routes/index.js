@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-//MISSING MIDDLEWARE 
+const authenticate = require('../middleware/authentication')
 
 router.use('/course', require('./course'))
 router.use('/purchase', require('./purchase'))

@@ -6,12 +6,24 @@ const purchaseModel = require('../models/purchase')
 const reviewModel = require('../models/review')
 const roleModel = require('../models/role')
 
-/* const sequelize = new Sequelize(
+const sequelize = new Sequelize(
   process.env.DB_DATABASE,
   process.env.DB_USER,
   process.env.DB_PASSWORD,
   {
     host: process.env.DB_HOST,
+    dialect: 'mysql',
+    port: 3306,
+    logging: false
+  }
+)
+
+/* const sequelize = new Sequelize(
+  'beduemyLocal',
+  'root',
+  '12345678',
+  {
+    host: 'localhost',
     dialect: 'mysql',
     port: 3306,
     logging: false
