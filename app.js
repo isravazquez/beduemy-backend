@@ -16,13 +16,25 @@ const sequelize = require('./config/db')
 //Conexión a la base de datos con try/catch
 try {
     sequelize.authenticate();
-    sequelize.sync();
+//    sequelize.sync();
     console.log('La conexion fue exitosa');
 } catch (error) {
     console.error('Hubo un problema con la conexión', error);
 }
 //===========================
 
+app.get('/', (req,res)=>{
+    return res.redirect('/api/v1/')
+})
+
 app.use('/api/v1', require('./routes'))
 
-app.listen(8080)
+//Catch 404 
+app.use(function (req, res, next) {
+    res.status(404).json({error: 'Not Found'})
+});
+
+
+app.listen(process.env.PORT || 3000, () => {
+    console.log("Server listing on PORT", process.env.PORT);  //Se agrega el puerto
+});
