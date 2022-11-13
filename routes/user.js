@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const sequelize = require('../config/db');
+const permission = require('../middleware/permission')
 
 // Get all users
 router.get('/', async (req, res) => {
