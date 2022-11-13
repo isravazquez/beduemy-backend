@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const sequelize = require('../config/db');
+const permission = require('../middleware/permission')
 
 // Get all reviews
 router.get('/', async (req, res) => {
@@ -22,7 +23,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Creating a new review
-router.post('/', async (req, res) => {
+router.post('/', permission(1,3), async (req, res) => {
     const { body } = req;
     const review = await sequelize.models.reviews.create({
         studentId: body.studentId,
@@ -35,7 +36,7 @@ router.post('/', async (req, res) => {
 });
 
 // Update a review by id
-router.put('/:id', async (req, res) => {
+router.put('/:id', permission(1,3), async (req, res) => {
     const { body, params: { id } } = req;
     const review = await sequelize.models.reviews.findByPk(id);
     if (!review) {
@@ -51,7 +52,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // Delete a review by id
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', permission(1,3), async (req, res) => {
     const { params: { id } } = req;
     const review = await sequelize.models.reviews.findByPk(id);
     if (!review) {

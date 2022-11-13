@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const sequelize = require('../config/db');
+const permission = require('../middleware/permission')
 
 // Get all courses
 router.get('/', async (req, res) => {
@@ -21,7 +22,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Create a new course
-router.post('/', async (req, res) => {
+router.post('/', permission(3), async (req, res) => {
   const { body } = req;
   const course = await sequelize.models.courses.create({
     instructorId: body.instructorId,
@@ -34,7 +35,7 @@ router.post('/', async (req, res) => {
 });
 
 // Update a course by id
-router.put('/:id', async (req, res) => {
+router.put('/:id', permission(3), async (req, res) => {
   const { body, params: { id } } = req;
   const course = await sequelize.models.courses.findByPk(id);
   if (!course) {
@@ -50,7 +51,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // Delete a course by id
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', permission(3), async (req, res) => {
   const { params: { id } } = req;
   const course = await sequelize.models.courses.findByPk(id);
   if (!course) {
