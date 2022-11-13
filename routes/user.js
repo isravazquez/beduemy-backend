@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const sequelize = require('../config/db');
+const permission = require('../middleware/permission')
 
 // Get all users
-router.get('/', async (req, res) => {
+router.get('/', permission(2,3), async (req, res) => {
     return await sequelize.models.users.findAndCountAll()
         .then((users) => {
             res.status(200).json({ data: users })
@@ -13,7 +14,7 @@ router.get('/', async (req, res) => {
 });
 
 // Get one user
-router.get('/:id', async (req, res) => {
+router.get('/:id', permission(2,3), async (req, res) => {
     const { params: { id } } = req;
     return await sequelize.models.users.findOne({
         where: { id },
@@ -32,7 +33,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Creating a new user
-router.post('/', async (req, res) => {
+router.post('/', permission(3), async (req, res) => {
     const { body } = req;
     return await sequelize.models.users.create({
         name: body.name,
@@ -50,7 +51,7 @@ router.post('/', async (req, res) => {
 });
 
 // Update a user by id
-router.put('/:id', async (req, res) => {
+router.put('/:id', permission(3), async (req, res) => {
     const { body, params: { id } } = req;
     return await sequelize.models.users.findByPk(id)
         .then(async (user) => {
@@ -72,7 +73,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // Delete a user by id
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', permission(3), async (req, res) => {
     const { params: { id } } = req;
     return await sequelize.models.users.findByPk(id)
         .then(async (user) => {

@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const sequelize = require('../config/db');
+const permission = require('../middleware/permission')
 
 // Get all roles
-router.get('/', async (req, res) => {
+router.get('/', permission(3), async (req, res) => {
     return await sequelize.models.roles.findAndCountAll()
         .then((roles) => {
             res.status(200).json({ data: roles })
@@ -13,7 +14,7 @@ router.get('/', async (req, res) => {
 });
 
 // Get one role
-router.get('/:id', async (req, res) => {
+router.get('/:id', permission(3), async (req, res) => {
     const { params: { id } } = req;
     return await sequelize.models.roles.findOne({
         where: { id }
@@ -29,7 +30,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Creating a new role
-router.post('/', async (req, res) => {
+router.post('/', permission(3), async (req, res) => {
     const { body } = req;
     return await sequelize.models.roles.create({
         role: body.role
@@ -43,7 +44,7 @@ router.post('/', async (req, res) => {
 });
 
 // Update a role by id
-router.put('/:id', async (req, res) => {
+router.put('/:id', permission(3), async (req, res) => {
     const { body, params: { id } } = req;
     return await sequelize.models.roles.findByPk(id)
         .then(async (role) => {
@@ -62,7 +63,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // Delete a role by id
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', permission(3), async (req, res) => {
     const { params: { id } } = req;
     return await sequelize.models.roles.findByPk(id)
         .then(async (role) => {
