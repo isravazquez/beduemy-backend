@@ -14,7 +14,7 @@ const sequelize = require('./config/db')
 //Conexión a la base de datos con try/catch
 try {
     sequelize.authenticate();
-    sequelize.sync();
+//    sequelize.sync();
     console.log('La conexion fue exitosa');
 } catch (error) {
     console.error('Hubo un problema con la conexión', error);
