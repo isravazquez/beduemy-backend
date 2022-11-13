@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
         name: body.name,
         surname: body.surname,
         email: body.email,
-        roleId: body.email, //Any id is allowed except admin? verification?
+        roleId: 3, //Any id is allowed except admin? verification?
         password: body.password
     });
     await user.save();
@@ -45,8 +45,7 @@ router.put('/:id', async (req, res) => {
         name: body.name,
         surname: body.surname,
         email: body.email,
-        roleId: body.email, //Is it allowed to change the role? duty of the database?
-        password: body.password
+        // password: body.password  check it
     });
     return res.json({ data: updatedUser });
 });

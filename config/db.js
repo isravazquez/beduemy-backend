@@ -14,16 +14,28 @@ const roleModel = require('../models/role')
 //     }
 // }});
 
+// const sequelize = new Sequelize(
+//     'beduemy',
+//     'root',
+//     '',
+//     {
+//       host: 'localhost',
+//       dialect: 'mysql',
+//       port: 3306,
+//       logging: false
+//     }
+// )
+
 const sequelize = new Sequelize(
-    'beduemy',
-    'root',
-    '',
-    {
-      host: 'localhost',
-      dialect: 'mysql',
-      port: 3306,
-      logging: false
-    }
+  'beduemy_db',
+  'beduemy',
+  'kakdif-dofhoM-0tazvo',
+  {
+    host: 'mysql-beduemy.alwaysdata.net',
+    dialect: 'mysql',
+    port: 3306,
+    logging: false
+  }
 )
 
 const models = [userModel, courseModel, purchaseModel, reviewModel, roleModel]
