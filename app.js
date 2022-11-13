@@ -24,7 +24,7 @@ try {
 //===========================
 
 app.get('/', (req,res)=>{
-    return res.redirect('/api/v1/')
+    return res.redirect('/api/v1')
 })
 
 app.use('/api/v1', require('./routes'))
