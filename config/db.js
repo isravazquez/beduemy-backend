@@ -25,11 +25,46 @@ for (let model of models)
 
 const { users, courses, purchases, reviews, roles } = sequelize.models;
 
-users.belongsTo(roles)
-courses.belongsTo(users)
-purchases.belongsTo(users)
-purchases.belongsTo(courses)
-reviews.belongsTo(users)
-reviews.belongsTo(courses)
+users.belongsTo(roles, {
+  foreignKey:{
+      name: 'roleId'
+  }
+})
+roles.hasMany(users)
+
+courses.belongsTo(users, {
+  foreignKey:{
+      name: 'instructorId'
+  }
+})
+users.hasMany(courses)
+
+purchases.belongsTo(users, {
+  foreignKey:{
+      name: 'studentId'
+  }
+})
+users.hasMany(purchases)
+
+purchases.belongsTo(courses, {
+  foreignKey:{
+      name: 'courseId'
+  }
+})
+courses.hasMany(purchases)
+
+reviews.belongsTo(users, {
+  foreignKey:{
+      name: 'studentId'
+  }
+})
+users.hasMany(reviews)
+
+reviews.belongsTo(courses, {
+  foreignKey:{
+      name: 'courseId'
+  }
+})
+courses.hasMany(reviews)
 
 module.exports = sequelize
