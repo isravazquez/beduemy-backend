@@ -14,18 +14,6 @@ app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-//=================================
-const sequelize = require('./config/db')
-//Conexión a la base de datos con try/catch
-try {
-    sequelize.authenticate();
-//    sequelize.sync();
-    console.log('La conexion fue exitosa');
-} catch (error) {
-    console.error('Hubo un problema con la conexión', error);
-}
-//===========================
-
 app.get('/', (req,res)=>{
     return res.redirect('/api/v1')
 })

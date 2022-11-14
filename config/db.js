@@ -30,35 +30,55 @@ users.belongsTo(roles, {
       name: 'roleId'
   }
 })
-roles.hasMany(users)
+roles.hasMany(users, {
+  foreignKey:{
+      name: 'roleId'
+  }
+})
 
 courses.belongsTo(users, {
   foreignKey:{
       name: 'instructorId'
   }
 })
-users.hasMany(courses)
+users.hasMany(courses, {
+  foreignKey:{
+      name: 'instructorId'
+  }
+})
 
 purchases.belongsTo(users, {
   foreignKey:{
       name: 'studentId'
   }
 })
-users.hasMany(purchases)
+users.hasMany(purchases, {
+  foreignKey:{
+      name: 'studentId'
+  }
+})
 
 purchases.belongsTo(courses, {
   foreignKey:{
       name: 'courseId'
   }
 })
-courses.hasMany(purchases)
+courses.hasMany(purchases, {
+  foreignKey:{
+      name: 'courseId'
+  }
+})
 
 reviews.belongsTo(users, {
   foreignKey:{
       name: 'studentId'
   }
 })
-users.hasMany(reviews)
+users.hasMany(reviews, {
+  foreignKey:{
+      name: 'studentId'
+  }
+})
 
 reviews.belongsTo(courses, {
   foreignKey:{

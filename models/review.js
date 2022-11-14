@@ -7,7 +7,7 @@ module.exports = (sequelize) => sequelize.define('reviews', {
         primaryKey: true,
         autoIncrement: true,
         unique: true
-},
+    },
     studentId: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -37,4 +37,14 @@ module.exports = (sequelize) => sequelize.define('reviews', {
         type: DataTypes.TEXT,
         allowNull: false
     }
-})
+}, {
+    hooks: {
+        beforeCreate: function (order, options) {
+            order.createdAt = new Date();
+            order.updatedAt = new Date();
+        },
+        beforeUpdate: function (order, options) {
+            order.updatedAt = new Date();
+        },
+    },
+});
