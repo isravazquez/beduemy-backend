@@ -39,7 +39,7 @@ router.post('/', permission(3), async (req, res) => {
         name: body.name,
         surname: body.surname,
         email: body.email,
-        roleId: 1, //Role 1 = Student
+        roleId: body.roleId, //Role 1 = Student
         password: body.password
     })
         .then(async (user) => {

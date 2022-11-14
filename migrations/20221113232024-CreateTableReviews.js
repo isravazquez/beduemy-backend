@@ -1,13 +1,16 @@
-const { DataTypes, Sequelize } = require('sequelize');
+'use strict';
 
-module.exports = (sequelize) => sequelize.define('reviews', {
-    id: {
-        type: DataTypes.INTEGER,
+/** @type {import('sequelize-cli').Migration} */
+module.exports = {
+  async up (queryInterface, Sequelize) {
+    await queryInterface.createTable('reviews', {
+      id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
         unique: true
-    },
+},
     studentId: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -27,24 +30,20 @@ module.exports = (sequelize) => sequelize.define('reviews', {
         onDelete: 'CASCADE'
     },
     score: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         validate: {
             is: /^[0-5]$/
         }
     },
     comment: {
-        type: DataTypes.TEXT,
+        type: Sequelize.TEXT,
         allowNull: false
     }
-}, {
-    hooks: {
-        beforeCreate: function (order, options) {
-            order.createdAt = new Date();
-            order.updatedAt = new Date();
-        },
-        beforeUpdate: function (order, options) {
-            order.updatedAt = new Date();
-        },
-    },
-});
+    })
+  },
+
+  async down (queryInterface, Sequelize) {
+    await queryInterface.dropTable('reviews')
+  }
+};

@@ -1,8 +1,11 @@
-const { DataTypes, Sequelize } = require('sequelize');
+'use strict';
 
-module.exports = (sequelize) => sequelize.define('purchases', {
-    id: {
-        type: DataTypes.INTEGER,
+/** @type {import('sequelize-cli').Migration} */
+module.exports = {
+  async up (queryInterface, Sequelize) {
+    await queryInterface.createTable('purchases', {
+      id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
@@ -26,14 +29,11 @@ module.exports = (sequelize) => sequelize.define('purchases', {
         },
         onDelete: 'CASCADE'
     }
-}, {
-    hooks: {
-        beforeCreate: function (order, options) {
-            order.createdAt = new Date();
-            order.updatedAt = new Date();
-        },
-        beforeUpdate: function (order, options) {
-            order.updatedAt = new Date();
-        },
-    },
-});
+    })
+
+  },
+
+  async down (queryInterface, Sequelize) {
+    await queryInterface.dropTable('purchases')
+  }
+};
